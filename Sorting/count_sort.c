@@ -27,8 +27,10 @@ int main() {
             for (int k = 0; k < SIZE; k++)
                 if (currentNum > nums[k] || nums[k] == currentNum && i > k)
                     position++;
-
-            printf("Thread %d doing iteration %d calculated position %d for number %d at %x\n", omp_get_thread_num(), i, position, currentNum, &currentNum);
+            
+            #ifdef _OPENMP
+                printf("Thread %d doing iteration %d calculated position %d for number %d at %x\n", omp_get_thread_num(), i, position, currentNum, &currentNum);
+            #endif
             temp[position] = currentNum;
         }
 
