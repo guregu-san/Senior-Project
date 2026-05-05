@@ -20,7 +20,7 @@ run: $(SERIAL_BIN) $(PARALLEL_BIN)
 	@echo 'Serial:' && ./$(SERIAL_BIN) && \
 	echo -e '\nParallel:' && ./$(PARALLEL_BIN)
 
-debug_serial: (SERIAL_DBG)
+debug_serial: $(SERIAL_DBG)
 	gdb $^
 
 debug_parallel: $(PARALLEL_DBG)
