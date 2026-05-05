@@ -14,8 +14,8 @@ int f(int N);
 //Standard DFS used to compute the size of a connected component.
 int dfsSize(Graph* graph, int v, int visited[]);
 //Computes the impact of removing a single node.
-int evaluateNode(Graph* graph, int nodeID);
-void evaluateGraph(Graph* graph);
+void evaluateNode(Graph* graph, int root, int globalVisited[], int* bestNode, int* bestGain);
+void evaluateGraph(Graph* graph, int* bestNode, int* bestGain);
 void fastRemoval(Graph* graph, int k);
 
 #endif

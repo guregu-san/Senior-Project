@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         printf("Log file couldn't be opened");
         return 2;
     }
-    fprintf(log, "Node,Neighbours");
+    fprintf(log, "Node,Deleted,Neighbours");
 
     int graphSize = DEFAULT_SIZE;
     int criticalNodes = CRIT_NODES;
@@ -48,8 +48,8 @@ int main(int argc, char* argv[]) {
         return 3;
     }
 
-    //struct Graph reducedGraph = *graph;
-    //fastRemoval(&reducedGraph, criticalNodes);
+    //Graph reducedGraph = *graph;
+    fastRemoval(graph, criticalNodes);
     printGraph(graph, log);
     //printGraph(&reducedGraph, log);
 

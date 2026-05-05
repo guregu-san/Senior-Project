@@ -88,7 +88,7 @@ void printGraph(Graph* graph, FILE* log) {
     for (int i = 0; i < graph->nodeCount; i++)
     {
         printf("Node %d: [%d", graph->nodes[i]->id, graph->nodes[i]->neighbours[0]);
-        fprintf(log, "%d,\"%d", graph->nodes[i]->id, graph->nodes[i]->neighbours[0]);
+        fprintf(log, "%d,%d,\"%d", graph->nodes[i]->id, graph->nodes[i]->deleted, graph->nodes[i]->neighbours[0]);
 
         for (int k = 1; k < graph->nodes[i]->neighbourCount; k++)
         {
