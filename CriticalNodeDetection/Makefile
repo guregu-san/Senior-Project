@@ -1,13 +1,22 @@
+SRC = main.c graph.c cnd.c
+
+SERIAL_BIN = serial_cndp.bin
+SERIAL_DBG = serial_cndp_dbg.bin
+
 all: serial_cndp
 
-run: serial_cndp draw.py
-	echo 'Serial:' && ./serial_cndp && python3 ./draw.py
+serial_cndp: $(SRC)
+	gcc $^ -o $(SERIAL_BIN)
+	gcc -g $^ -o $(SERIAL_DBG)
 
-debug_serial: serial_cndp_debug
-	gdb serial_cndp_debug
+run: $(SERIAL_BIN)
+	@echo 'Serial:' && ./$(SERIAL_BIN)
 
-serial_cndp: main.c graph.c cnd.c
-	gcc main.c graph.c cnd.c -o serial_cndp && gcc main.c graph.c cnd.c -o serial_cndp_debug -g
+debug_serial: $(SERIAL_DBG)
+	gdb $(SERIAL_DBG)
+
+draw: draw.py
+	python3 ./draw.py
 
 clean:
-	rm serial* log.csv
+	rm *.bin log.csv

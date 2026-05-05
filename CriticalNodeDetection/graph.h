@@ -6,15 +6,15 @@
 
 typedef struct {
     int id;
-    int neighbourCount;
     int* neighbours;
+    int neighbourCount;
     int deleted;
     int impact;
 } Node;
 
 typedef struct {
-    int nodeCount;
     Node** nodes;
+    int nodeCount;
 } Graph;
 
 Graph* createGraph(int size);

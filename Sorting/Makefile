@@ -1,19 +1,30 @@
+SRC = count_sort.c
+
+SERIAL_BIN = serial_count_sort.bin
+SERIAL_DBG = serial_count_sort_dbg.bin
+
+PARALLEL_BIN = parallel_count_sort.bin
+PARALLEL_DBG = parallel_count_sort_dbg.bin
+
 all: serial_count_sort parallel_count_sort
 
-run: serial_count_sort parallel_count_sort
-	echo 'Serial:' && ./serial_count_sort && echo -e '\nParallel:' && ./parallel_count_sort
+serial_count_sort: $(SRC)
+	gcc $^ -o $(SERIAL_BIN)
+	gcc -g $^ -o $(SERIAL_DBG)
 
-debug_serial: serial_count_sort_debug
-	gdb serial_count_sort_debug
+parallel_count_sort: $(SRC)
+	gcc -fopenmp $^ -o $(PARALLEL_BIN)
+	gcc -g -fopenmp $^ -o $(PARALLEL_DBG)
 
-debug_parallel: parallel_count_sort_debug
-	gdb parallel_count_sort_debug
+run: $(SERIAL_BIN) $(PARALLEL_BIN)
+	@echo 'Serial:' && ./$(SERIAL_BIN) && \
+	echo -e '\nParallel:' && ./$(PARALLEL_BIN)
 
-serial_count_sort: count_sort.c
-	gcc count_sort.c -o serial_count_sort && gcc count_sort.c -o serial_count_sort_debug -g
+debug_serial: (SERIAL_DBG)
+	gdb $^
 
-parallel_count_sort: count_sort.c
-	gcc -fopenmp count_sort.c -o parallel_count_sort && gcc -fopenmp count_sort.c -o parallel_count_sort_debug -g
+debug_parallel: $(PARALLEL_DBG)
+	gdb $^
 
 clean:
-	rm *_count*
+	rm *.bin
