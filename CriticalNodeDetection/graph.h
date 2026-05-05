@@ -1,9 +1,10 @@
+#pragma once
 #ifndef GRAPH_H
 #define GRAPH_H
 
 #include <stdio.h>
 
-typedef struct Node {
+typedef struct {
     int id;
     int neighbourCount;
     int* neighbours;
@@ -11,7 +12,7 @@ typedef struct Node {
     int impact;
 } Node;
 
-typedef struct Graph {
+typedef struct {
     int nodeCount;
     Node** nodes;
 } Graph;

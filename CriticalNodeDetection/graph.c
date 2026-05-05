@@ -2,6 +2,12 @@
 #include "graph.h"
 #define CONNECTION_CHANCE 30
 
+/**
+ * @brief Create a Graph object
+ * 
+ * @param size 
+ * @return Graph* 
+ */
 Graph* createGraph(int size) {
     if (size < 2)
         return NULL;
@@ -81,6 +87,12 @@ void removeNodeFromGraph(Node* node, Graph* graph) {
    // graph.nodes[graph.nodes.size()] = node;
 }
 
+/**
+ * @brief Print a Graph object
+ * 
+ * @param graph 
+ * @param log 
+ */
 void printGraph(Graph* graph, FILE* log) {
     printf("\n");
     fprintf(log, "\n");
@@ -101,6 +113,11 @@ void printGraph(Graph* graph, FILE* log) {
     }
 }
 
+/**
+ * @brief Deallocate heap memory used by a graph object
+ * 
+ * @param graph 
+ */
 void freeGraph(Graph* graph) {
     for (int i = 0; i < graph->nodeCount; i++)
     {

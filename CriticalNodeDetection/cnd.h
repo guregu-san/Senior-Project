@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CND_H
 #define CND_H
 
