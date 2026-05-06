@@ -18,8 +18,6 @@ typedef struct {
 } Graph;
 
 Graph* createGraph(int size);
-void addNodeToGraph(Node* node, Graph* graph);
-void removeNodeFromGraph(Node* node, Graph* graph);
 void printGraph(Graph* graph, FILE* log);
 void freeGraph(Graph* graph);
 

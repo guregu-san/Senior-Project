@@ -73,14 +73,6 @@ Graph* createGraph(int size) {
     return graph;
 }
 
-void addNodeToGraph(Node* node, Graph* graph) {
-    //graph.nodes[graph.nodes.size()] = node;
-}
-
-void removeNodeFromGraph(Node* node, Graph* graph) {
-   // graph.nodes[graph.nodes.size()] = node;
-}
-
 void printGraph(Graph* graph, FILE* log) {
     printf("\n");
     fprintf(log, "\n");
